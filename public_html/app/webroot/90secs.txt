@@ -1,0 +1,29 @@
+OMGHelp 
+Live Video Support On Your Phone
+
+Hi, We're from team OMGHELP and today we'd like to show you how we'll be redefining online support calls.
+OMGHELP is a mobile service that brings the power of live video and image annotations to technical support. 
+
+<demo>
+When starting the application for the first time, the customer can quickly choose what they need help with. 
+<onscreen: scenario - PC set up>
+<navigates to category>
+Announcer: Customers are matched with technical experts on our platform. 
+Announcer: The experts sign in via our browser client and select the categories they specialize in. 
+Announcer: User requests are displayed on the dashboard in realtime. 
+<fade out>
+Expert looks at video: "I see, you have quite a few parts. Let's start with the power cable."
+<noob follows instructions>
+Announcer: With help of video, tasks can be understood quicker.
+<fade out>
+Expert looks at video: "Now plug this grey graphics cable into the adaptor at the back of your computer?"
+Noob: which port are you talking about?
+<noob puts video on back panel>
+Announcer: Live annotations provide the customer with a clear way to solve issues. 
+Expert shown annotating: "it looks like this computer has a graphics card. You need to use this port (draws arrow on graphics port). "
+<fade out>
+
+OMGHELP is both a technical support platform as well as a game changer for existing companies with many field callouts. 
+With this gift of sight, many problems no longer require a technician in the field, saving both company and consumer time and money.
+
+Thank you for your attention. 

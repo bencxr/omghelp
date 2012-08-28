@@ -1,0 +1,584 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>OTSessionDelegate Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 737)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">OpenTok iOS SDK </a></h1>
+				<a id="developerHome" href="../index.html">TokBox, Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">OTSessionDelegate Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/session:didDropStream:">&nbsp;&nbsp;&nbsp;&nbsp;- session:didDropStream:</option>
+	
+	<option value="//api/name/session:didFailWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- session:didFailWithError:</option>
+	
+	<option value="//api/name/session:didReceiveStream:">&nbsp;&nbsp;&nbsp;&nbsp;- session:didReceiveStream:</option>
+	
+	<option value="//api/name/sessionDidConnect:">&nbsp;&nbsp;&nbsp;&nbsp;- sessionDidConnect:</option>
+	
+	<option value="//api/name/sessionDidDisconnect:">&nbsp;&nbsp;&nbsp;&nbsp;- sessionDidDisconnect:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Connecting to a session">Connecting to a session</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Monitoring streams in a session">Monitoring streams in a session</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/session:didDropStream:">session:didDropStream:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/session:didFailWithError:">session:didFailWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/session:didReceiveStream:">session:didReceiveStream:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionDidConnect:">sessionDidConnect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionDidDisconnect:">sessionDidDisconnect:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="OTSessionDelegate Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">OTSessionDelegate Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">OTSession.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Used to send messages for an OTSession instance. The OTSession class includes a
+<code>delegate</code> property. When you send the <a href="../Classes/OTSession.html#//api/name/initWithSessionId:delegate:">[OTSession initWithSessionId:delegate:]</a> message,
+you specify an OTSessionDelegate object.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Connecting to a session" name="task_Connecting to a session"></a>
+						<h3 class="subsubtitle task-title">Connecting to a session</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sessionDidConnect:">&ndash;&nbsp;sessionDidConnect:</a></code>
+		<span class="tooltip"><p>Sent when the session connects.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sessionDidDisconnect:">&ndash;&nbsp;sessionDidDisconnect:</a></code>
+		<span class="tooltip"><p>Sent when the session disconnects.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/session:didFailWithError:">&ndash;&nbsp;session:didFailWithError:</a></code>
+		<span class="tooltip"><p>Sent if the session fails to connect, some time after your applications sends the
+[OTSession connectWithApiKey:token:] message.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
+						
+						<a title="Monitoring streams in a session" name="task_Monitoring streams in a session"></a>
+						<h3 class="subsubtitle task-title">Monitoring streams in a session</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/session:didReceiveStream:">&ndash;&nbsp;session:didReceiveStream:</a></code>
+		<span class="tooltip"><p>Sent when a new stream is created in this session.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/session:didDropStream:">&ndash;&nbsp;session:didDropStream:</a></code>
+		<span class="tooltip"><p>Sent when a stream is no longer published to the session.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/session:didDropStream:" title="session:didDropStream:"></a>
+	<h3 class="subsubtitle method-title">session:didDropStream:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sent when a stream is no longer published to the session.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)session:(OTSession *)<em>session</em> didDropStream:(OTStream *)<em>stream</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>session</em></dt>
+			<dd><p>The <a href="../Classes/OTSession.html">OTSession</a> instance that sent this message.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>stream</em></dt>
+			<dd><p>The stream associated with this event.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Note that if your application stops publishing a stream to the session, its session delegate is
+sent an [OTSessionDelegate session:didDropStream:] message for its own published stream.
+You can check the stream.connection.connectionId property to see if it matches
+the <code>session.connection.connectionId</code> property. (If it matches, the stream was
+published from your connection.)</p>
+
+<p>When a stream is dropped, the view for any <a href="../Classes/OTSubscriber.html">OTSubscriber</a> object for the stream is
+removed from its superview. If the stream corresponds to an <a href="../Classes/OTPublisher.html">OTPublisher</a> object,
+the <a href="../Classes/OTPublisher.html">OTPublisher</a> object&rsquo;s view is removed from its superview.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/session:didFailWithError:" title="session:didFailWithError:"></a>
+	<h3 class="subsubtitle method-title">session:didFailWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sent if the session fails to connect, some time after your applications sends the
+[OTSession connectWithApiKey:token:] message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)session:(OTSession *)<em>session</em> didFailWithError:(OTError *)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>session</em></dt>
+			<dd><p>The <a href="../Classes/OTSession.html">OTSession</a> instance that sent this message.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An <a href="../Classes/OTError.html">OTError</a> object describing the issue. The <code>OTSessionErrorCode</code> enum
+(defined in the OTError class) defines values for the <code>code</code> property of this object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/session:didReceiveStream:" title="session:didReceiveStream:"></a>
+	<h3 class="subsubtitle method-title">session:didReceiveStream:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sent when a new stream is created in this session.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)session:(OTSession *)<em>session</em> didReceiveStream:(OTStream *)<em>stream</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>session</em></dt>
+			<dd><p>The OTSession instance that sent this message.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>stream</em></dt>
+			<dd><p>The stream associated with this event.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Note that if your application successfuly publishes to this session, its session delegate is sent
+an [OTSessionDelegate session:didReceiveStream:] message for its own published stream.
+You can compare the <code>stream.connection.connectionId</code> property with the <code>session.connection.connectionId</code>
+property. (If they matches, the stream is published from your connection.)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sessionDidConnect:" title="sessionDidConnect:"></a>
+	<h3 class="subsubtitle method-title">sessionDidConnect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sent when the session connects.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)sessionDidConnect:(OTSession *)<em>session</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>session</em></dt>
+			<dd><p>The <a href="../Classes/OTSession.html">OTSession</a> instance that sent this message.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sessionDidDisconnect:" title="sessionDidDisconnect:"></a>
+	<h3 class="subsubtitle method-title">sessionDidDisconnect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sent when the session disconnects.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)sessionDidDisconnect:(OTSession *)<em>session</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>session</em></dt>
+			<dd><p>The <a href="../Classes/OTSession.html">OTSession</a> instance that sent this message.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>When a session disconnects, all <a href="../Classes/OTSubscriber.html">OTSubscriber</a> and <a href="../Classes/OTPublisher.html">OTPublisher</a> objects' views are
+removed from their superviews.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 TokBox, Inc. All rights reserved.</span><br />
+						
+						</p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

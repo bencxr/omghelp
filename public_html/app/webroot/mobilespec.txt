@@ -1,0 +1,117 @@
+Phone app:
+
+1. Display a start up screen while loading:
+
+GET http://omghelp.net/mobileapi/startup/{CLIENTID}/{VENDORID}
+
+where
+    {clientid} = "Randomly Generated Client ID"
+    {vendorid} =  "use 0"
+
+
+will return either of
+{
+    "MenuCategories": 
+    {
+        [
+            {
+                "Category": {
+                    "id": "Numberic Category ID",
+                    "name": "Category name"
+                },
+                "children": [
+                    {
+                        "Category": 
+                        {
+                            "id": "Numberic Category ID",
+                            "name": "Category name"
+                        },
+                        "children": []
+                    },
+                    {
+                        "Category": 
+                        {
+                            "id": "Numberic Category ID",
+                            "name": "Category name"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "Category": {
+                    "id": "Numberic Category ID",
+                    "name": "Category name"
+                },
+                "children": [
+                    {
+                        "Category": 
+                        {
+                            "id": "Numberic Category ID",
+                            "name": "Category name"
+                        },
+                        "children": []
+                    },
+                    {
+                        "Category": 
+                        {
+                            "id": "Numberic Category ID",
+                            "name": "Category name"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+In this case go to the menu pane
+
+or
+{
+    "Conversation": 
+    {
+        "SessionId" : "The TokBox Session id",
+        "Token": "The TokBox Session Token", 
+        "HelperName": "name of the helper", 
+        "CategoryName": "Category name",
+        "Image": {
+            "Enabled": "true or false",
+            "Photo": "url of photo png",
+            "Overlay": "png data"
+        }
+    }
+}
+
+In this case you should go directly to the conversation pane as it is a resume or a direct whitebox case.
+
+
+Menu Pane
+=========
+
+1. Display logo and ask to get help with... the menu json received from above. Example is in categories-sample.txt
+
+2. When User clicks on a category with an id, do
+
+GET http://omghelp.net/mobileapi/startconversation/{CLIENTID}/{CATEGORYID}
+where
+    {clientid} = "Randomly Generated Client ID"
+    {categoryid} =  "category id selected"
+
+Conversation Pane
+=================
+GET http://omghelp.net/mobileapi/getconversation/conversationID
+
+You receive JSON like in conversation-sample.txt
+
+The conversation pane should contain the video/image on the top, a "Disconnect" button, and the helper name and category on the bottom.
+
+You should display a "waiting for helpers" animation in the video/image area until you see the connection event from the other side.
+
+When the video starts, listen on the signalreceived event. If you get that event, poll again the above mobiile url. The image data will most likely be different, display the iamge data instead of the video. You should also poll the mobile URL every 10 seconds just in case something bad happened on the desktop client. 
+
+To close the conversation, do a
+GET http://omghelp.net/mobileapi/closeconversation/sessionId
+
+Then go back to the menu pane. 

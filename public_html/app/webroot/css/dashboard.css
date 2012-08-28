@@ -1,0 +1,72 @@
+#profile_edit {
+    padding-top:10px;
+    padding-right: 20px;
+    border-right: 1px solid #939393;
+    width: 300px;
+    position: absolute;
+    top: 96px;
+    box-shadow: 5px 0px 5px -3px #888;
+}
+
+#helpCount {
+    padding: 10px;
+    display: block;
+    font-weight: bolder;
+}
+
+#help {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 335px;
+}
+
+#help h2 {
+    color:#868992;
+    font-weight: bold;
+}
+
+#help #unanswered {
+    display: inline-block;
+    background: #E6E6E7;
+}
+
+#help #unanswered .call {
+    display: inline-block;
+    padding: 20px;
+    margin: 20px auto 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#help #unanswered .call div {
+    float: left;
+    padding: 10px;
+    width: 300px;
+}
+
+#help #unanswered .call .user {
+    font-size: 16px;
+    width: 300px;
+    padding: 10px;
+}
+
+#help #unanswered .call .user .category {
+    padding-top: 3px;
+}
+
+
+#help #unanswered .call .age .time {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#help #unanswered .call .age .answer {
+    padding:  5px 10px;
+    margin-top: 3px;
+    background-color: #0097e3;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+}
+

@@ -1,0 +1,212 @@
+#work_space {
+    width:100%;
+}
+
+#screen_shots {
+    width:300px;
+    position: absolute;
+    top: 116px;
+    text-align: center;
+    background-color:#fff;
+}
+
+#screen_shots h2 {
+    color: #3d709d;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+#screen_shots img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#screen_shots div {
+    margin-top: 34px;
+}
+
+#video_area {
+    margin-left: 305px;
+    padding: 10px;
+    margin-top: 56px;
+    min-height: 400px;
+}
+
+#video_feed {
+    width: 50%;
+    float: left;
+    margin-top: -50px;
+    box-shadow: 10px 0 5px -2px #ccc, -10px 0 5px -2px #ccc;
+    padding-bottom: 10px;
+}
+
+#subscribers {
+    text-align: center;
+}
+
+#subscribers h2 {
+    color: #3d709d;
+    font-weight: bolder;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+#subscribers object {
+    border-radius: 10px;
+    border: 10px solid #f7f7f7; 
+    margin-top: 35px;
+}
+
+#doodle_area {
+    text-align: center;
+}
+
+#doodle_area h2 {
+    color: #050D2D;
+}
+
+
+#menu_container {
+    color: white;
+    background: transparent !important;
+    
+}
+
+#color_block {
+    display: inline-block;
+}
+
+.gui {
+    background-color: #165376 !important;
+    border-radius: 20px;
+    padding: 10px 20px !important;
+    text-align: left !important;
+    height: 62px;
+}
+
+#brush_selector {
+    display: block;
+    position: absolute;
+    left: 30%;
+    width: 100px;
+    top: 15px;
+}
+
+#brush_selector > span:nth-child(2) {
+    display: block;
+    position: absolute;
+    height: 20px;
+    line-height: 25px;
+    vertical-align: text-top;
+    top: 25px;
+    font-weight: bold;
+}
+
+
+#brush_selector > span:nth-child(1) {
+    display: block;
+    position: absolute;
+    height: 20px;
+    line-height: 25px;
+    vertical-align: text-top;
+    top: 0;
+    font-weight: bold;
+}
+
+#brush_selector span {
+    padding-left: 10px;
+}
+
+#brush_selector input {
+    padding: 10px;
+}
+
+#color_block {
+    display: block;
+    position: absolute;
+    top: 14px;
+}
+
+#color_label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#color_selector {
+    display: block;
+    position: absolute;
+    top: 22px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#brush_selector {
+    display: inline-block;
+}
+
+#clear_button {
+    position: absolute;
+    right: 90px;
+    top: 12px;
+}
+
+#clear_button:after {
+    position: absolute;
+    top: 34%;
+    content: "CLEAR";
+    left: 7px;
+    font-weight: bold;
+}
+
+
+#done_button {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+}
+
+#done_button:after {
+    position: absolute;
+    top: 34%;
+    content: "DONE";
+    left: 11px;
+    font-weight: bold;
+}
+
+#doodlemenu .button {
+    background-color: #3aa6e4;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-left: 5px;
+}
+
+#links {
+    text-align: center;
+}
+
+#links span {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+#disconnectedLink {
+    background-color: #165376;
+}
+
+#capturePicture {
+    background-color: #3aa6e4;
+}

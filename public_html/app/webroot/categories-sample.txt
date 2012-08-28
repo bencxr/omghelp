@@ -1,0 +1,100 @@
+{
+    "MenuCategories": 
+        [
+        {
+            "Category":{
+                "id":"1",
+                    "lft":"0",
+                    "rght":"0",
+                    "parent_id":null,
+                    "name":"Computers"
+            },
+                "children":[
+                {
+                    "Category":{
+                        "id":"11",
+                        "lft":"0",
+                        "rght":"0",
+                        "parent_id":"1",
+                        "name":"Network Connectivity"
+                    },
+                    "children":[
+
+                        ]
+                },
+                {
+                    "Category":{
+                        "id":"12",
+                        "lft":"0",
+                        "rght":"0",
+                        "parent_id":"1",
+                        "name":"Bootup Issues"
+                    },
+                    "children":[
+
+                        ]
+                },
+                {
+                    "Category":{
+                        "id":"13",
+                        "lft":"0",
+                        "rght":"0",
+                        "parent_id":"1",
+                        "name":"Windows Installation"
+                    },
+                    "children":[
+
+                        ]
+                }
+            ]
+        },
+        {
+            "Category":{
+                "id":"2",
+                "lft":"0",
+                "rght":"0",
+                "parent_id":null,
+                "name":"TV and Video"
+            },
+            "children":[
+            {
+                "Category":{
+                    "id":"21",
+                    "lft":"0",
+                    "rght":"0",
+                    "parent_id":"2",
+                    "name":"Cable Setup"
+                },
+                "children":[
+
+                    ]
+            },
+            {
+                "Category":{
+                    "id":"22",
+                    "lft":"0",
+                    "rght":"0",
+                    "parent_id":"2",
+                    "name":"Game Console Setup"
+                },
+                "children":[
+
+                    ]
+            },
+            {
+                "Category":{
+                    "id":"23",
+                    "lft":"0",
+                    "rght":"0",
+                    "parent_id":"2",
+                    "name":"Using TiVo"
+                },
+                "children":[
+
+                    ]
+            }
+            ]
+        }
+    ]
+
+}

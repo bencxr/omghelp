@@ -1,0 +1,4 @@
+{
+    "Conversation": 
+    <?php echo $json ?>
+}

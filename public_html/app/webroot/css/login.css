@@ -1,0 +1,42 @@
+#container {
+    text-align: center;
+}
+
+#content {
+    background: transparent;
+    display: inline-block;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+#login_content {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#auth_window {
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+div.users {
+    background-color: #fff;
+    width: 400px;
+    margin: 20px auto;
+    float: none;
+    padding: 5px;
+    text-align: left;
+}
+
+div.users .input {
+    background: #fff;
+}
+
+div.users label {
+    color: #00125c;
+}
+
+div.submit {
+    text-align: center;
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>HelloWorld-README Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.0.5 (build 737)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">OpenTok iOS SDK </a></h1>
+				<a id="developerHome" href="../index.html">TokBox, Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">HelloWorld-README Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="HelloWorld-README Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h1>The OpenTokHello sample app</h1>
+<p>The OpenTok-iOS-Hello-World sample app is available at <a href='https://github.com/opentok/OpenTok-iOS-Hello-World'>https://github.com/opentok/OpenTok-iOS-Hello-World</a>.</p>
+
+<p><strong><em>Important:</em></strong> Be sure to git clone with &mdash;recursive to grab the required OpenTok iOS SDK submodule!</p>
+
+<p>The OpenTokHello sample app is a basic sample app that shows the most basic features of the OpenTok iOS SDK.</p>
+
+<p>Once the app connects to the OpenTok session, it publishes an audio-video stream, which is displayed onscreen. Then, the audio-video stream shows up as a subscribed stream (along with any other streams currently in the session).</p>
+
+<p>Before you test the sample app, be sure to read <a href="http://www.tokbox.com/opentok/ios/docs/docs/Using_iOS.html">Using the OpenTok iOS SDK</a>.</p>
+
+<h2>Testing the sample app</h2>
+
+<ol>
+<li><p>Open the OpenTokHelloWorld.xcodeproj file in XCode.</p></li>
+<li><p>Connect your iOS device to a USB port on your Mac. Make sure that your device is connected to the internet .</p></li>
+<li><p>Select the XCode Organizer (Window > Organizer), and make sure that your device is provisioned to work with the sample app. For more information,
+see the section on &ldquo;Setting up your development environment&rdquo; at <a href="https://developer.apple.com/programs/ios/gettingstarted/">this page</a> at
+the Apple iOS Dev Center.</p>
+
+<p>  Note that the OpenTok iOS SDK does not support publishing streams in the XCode iOS Simulator.
+  To test OpenTok apps on an iOS device, you will need to register as an Apple iOS developer at
+  <a href="http://developer.apple.com/programs/register/">http://developer.apple.com/programs/register/</a>.</p></li>
+<li><p>In the main XCode project window, click the Run button (or select Product > Run).</p>
+
+<p> The app should start on your connected device. Once the app connects to the OpenTok session, it publishes an audio-video stream, which is displayed onscreen. Then, the audio-video stream shows up as a subscribed stream (along with any other streams currently in the session).</p></li>
+<li><p>Close the app. Now set up the app to subscribe to audio-video streams other than your own:</p>
+
+<ul>
+<li><p>In XCode, near the top of the ViewController.m file, change the <code>subscribeToSelf</code> property to be set to <code>NO</code>:</p>
+
+<pre><code>  static bool subscribeToSelf = NO;
+</code></pre></li>
+<li>Run the app on your iOS device again.</li>
+<li>In a browser on your Mac, load the browser_demo.html file, included with the sample app, to add more streams to the session.
+In the web page, click the Connect and Publish buttons.
+<em>Note:</em> If the web page asks you to set the Flash Player Settings, or if you do not see a display of your camera in the page, see the
+instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html#localTest">&ldquo;Flash Player Settings for local testing&rdquo;</a>.</li>
+</ul>
+</li>
+<li><p>You can generate a unique session ID at this URL:</p>
+
+<p> <a href="http://staging.tokbox.com/hl/session/create">http://staging.tokbox.com/hl/session/create</a></p>
+
+<p> Using a unique session ID prevents other test developers from seeing your published streams (and it keeps their streams out of your session).
+ In the ViewController.m file, change the <code>kSessionId</code> constant in the ViewController.m file to the new session ID. Also change the value of the
+ <code>sessionId</code> variable in the browser_demo.html page.</p></li>
+</ol>
+
+<h2>Understanding the code</h2>
+
+<p>The ViewController.m file contains the main implementation code that includes use of the OpenTok iOS API.</p>
+
+<h3>Initializing an OTSession object and connecting to an OpenTok session</h3>
+
+<p>When the view initially loads, the app allocates an OTSession object and sends it the <code>[OTSession initWithSessionId:andDelegate:]</code> message:</p>
+
+<pre><code>- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    _session = [[OTSession alloc] initWithSessionId:kSessionId
+                                        andDelegate:self];
+    [self doConnect];
+}
+</code></pre>
+
+<p>The <code>kSessionId</code> constant is the session ID string for the OpenTok session your app connects to. For testing purposes, you can generate a new session ID at http://staging.tokbox.com/hl/session/create.</p>
+
+<p>The <code>_subscribers</code> array will be used to track OTSubscriber objects. These objects represent audio-video streams in the session that you subscribe to (and display onscreen).</p>
+
+<p>The <code>doConnect</code> method sends the [OTSession connectWithApiKey:token:] to the the <code>_session</code> object:</p>
+
+<pre><code>- (void)doConnect 
+{
+    [_session connectWithApiKey:kApiKey token:kToken];
+}
+</code></pre>
+
+<p>The <code>kToken</code> constant is the token constant for the client connecting to the session. For testing purposes, this app uses the <code>"devtoken"</code> test token string. For a production version of your app, you will need to generate unique tokens for each user, using one of the OpenTok server-side libraries. See <a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/token_creation.html">Connection Token Creation</a>.</p>
+
+<p>When the app connects to the OpenTok session, the session delegate is sent the sessionDidConnect message:</p>
+
+<pre><code>- (void)sessionDidConnect:(OTSession*)session
+{
+    NSLog(@"sessionDidConnect (%@)", session.sessionId);
+    [self doPublish];
+}
+</code></pre>
+
+<h3>Publishing an audio-video stream to a session</h3>
+
+<p>The <code>doPublish</code> method allocates and initializes an OTPublisher object, and then sends the <code>[OTSession publish:]</code> message to
+the <code>_session</code> object:</p>
+
+<pre><code>- (void)doPublish
+{
+    _publisher = [[OTPublisher alloc] initWithDelegate:self];
+    [_publisher setName:[[UIDevice currentDevice] name]];
+    [_session publish:_publisher];
+    [self.view addSubview:_publisher.view];
+    [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
+}
+</code></pre>
+
+<p>The name of a stream is an optional string that appears at the bottom of the stream&rsquo;s view when the user taps the stream (or clicks it in
+a browser). You set the name for the stream by setting the <code>name</code> property of the OTPublisher object before you send the <code>[OTSession publish]</code> message.</p>
+
+<p>The view of the OTPublisher object is added as a subview of the ViewController&rsquo;s view.</p>
+
+<h3>Subscribing to streams</h3>
+
+<p>When a stream is added to a session, the OTSessionDelegate&rsquo;s <code>session:didReceiveStream:</code> message is sent. It then allocates and initializes
+an OTSubscriber object for the stream, and adds that OTSubscriber object to the <code>_subscribers</code> array:</p>
+
+<pre><code>- (void)session:(OTSession*)mySession didReceiveStream:(OTStream*)stream
+{
+    NSLog(@"session didReceiveStream (%@)", stream.streamId);
+
+    if ( (subscribeToSelf &amp;&amp; [stream.connection.connectionId isEqualToString: _session.connection.connectionId])
+        || 
+        (!subscribeToSelf &amp;&amp; ![stream.connection.connectionId isEqualToString: _session.connection.connectionId])
+        ) {
+        if (!_subscriber) {
+            _subscriber = [[OTSubscriber alloc] initWithStream:stream delegate:self];
+        }
+    }
+}
+</code></pre>
+
+<p>This app subscribes to one stream, at most. It either subscribes to the stream you publish, or it subscribes to one of the other streams
+in the session (if there is one), based on the <code>subscribeToSelf</code> property, which is set at the top of the file:</p>
+
+<pre><code>static bool subscribeToSelf = NO;
+</code></pre>
+
+<p>The connection ID for the stream you publish with match the connection ID for your session. (Note that in a real application, a client would not
+normally subscribe to its own published stream. However, for this test app, it is convenient for the client to subscribe to its own stream.)</p>
+
+<p>If the session does not yet have the <code>_subscriber</code> property set to an OTSubscriber object, it does so in this method.</p>
+
+<p>The OTSubscriber&rsquo;s delegate is sent the <code>subscriberDidConnectToStream</code> message when the subscriber connects to the stream. At this point, the code adds the OTSubscriber&rsquo;s view to as a subview of the ViewController:</p>
+
+<pre><code>- (void)subscriberDidConnectToStream:(OTSubscriber*)subscriber
+{
+    NSLog(@"subscriberDidConnectToStream (%@)", subscriber.stream.connection.connectionId);
+    [subscriber.view setFrame:CGRectMake(widgetWidth * subscriberCount++, widgetHeight, widgetWidth, widgetHeight)];
+    [self.view addSubview:subscriber.view];
+}
+</code></pre>
+
+<p>The OpenTok iOS SDK supports a limited number of simultaneous audio-video streams in an app:</p>
+
+<ul>
+<li>On iPad 2 and iPad 3, the limit is four streams. An app can have up to four simultaneous subscribers, or one publisher and up to three subscribers.</li>
+<li>On all other supported iOS devices, the limit is two streams. An app can have up to two subscribers, or one publisher and one subscriber.</li>
+</ul>
+
+
+<h3>Removing dropped streams</h3>
+
+<p>As streams leave the session (when clients disconnect or stop publishing), the OTSession delegate is sent the <code>session:didDropStream:</code> message.</p>
+
+<p>Subscriber objects are automatically removed from their superview when their stream is dropped.</p>
+
+<p>The code checks to see if you are subscribing to streams other than your own. If so, it checks to see if the dropped stream matches the subscriber&rsquo;s
+stream. It does this by comparing the <code>streamId</code> property of the dropped OTStream object with the <code>stream.streamId</code> property of the OTSubscriber:</p>
+
+<pre><code>- (void)session:(OTSession*)session didDropStream:(OTStream*)stream{
+    NSLog(@"session didDropStream (%@)", stream.streamId);
+    if (!subscribeToSelf
+        &amp;&amp; _subscriber
+        &amp;&amp; [_subscriber.stream.streamId isEqualToString: stream.streamId])
+    {
+        _subscriber = nil;
+        [self updateSubscriber];
+    }
+}
+</code></pre>
+
+<p>The <code>updateSubscriber</code> method subscribes to another stream in the session (other than the one you publish), if there is one. The
+<code>OTSession.streams</code> property is a dictionary of all streams in a session:</p>
+
+<pre><code>- (void)updateSubscriber {
+    for (NSString* streamId in _session.streams) {
+        OTStream* stream = [_session.streams valueForKey:streamId];
+        if (stream.connection.connectionId != _session.connection.connectionId) {
+            _subscriber = [[OTSubscriber alloc] initWithStream:stream delegate:self];
+            break;
+        }
+    }
+}
+</code></pre>
+
+<h2>Knowing when you have disconnected from the session</h2>
+
+<p>Finally, when the app disconnects from the session, the OTSubscriber&rsquo;s delegate is sent the <code>sessionDidDisconnect:</code> message:</p>
+
+<pre><code>- (void)sessionDidDisconnect:(OTSession*)session
+{
+    NSString* alertMessage = [NSString stringWithFormat:@"Session disconnected: (%@)", session.sessionId];
+    NSLog(@"sessionDidDisconnect (%@)", alertMessage);
+}
+</code></pre>
+
+<p>If an app cannot connect to the session (perhaps because of no network connection), the OTSubscriber&rsquo;s delegate is sent
+the <code>session: didFailWithError:</code> message:</p>
+
+<pre><code>- (void)session:(OTSession*)session didFailWithError:(OTError*)error {
+    NSLog(@"sessionDidFail");
+    [self showAlert:[NSString stringWithFormat:@"There was an error connecting to session %@", session.sessionId]];
+}
+</code></pre>
+
+<h2>Next steps</h2>
+
+<p>The <a href="BasicSample-README.html">OpenTokBasic sample app</a> uses more features of the OpenTok iOS SDK than the OpenTokHello app does.</p>
+
+<p>For details on the full OpenTok iOS API, see the <a href="http://www.tokbox.com/opentok/ios/docs/index.html">reference documentation</a>.</p>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 TokBox, Inc. All rights reserved.</span><br />
+						
+						</p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

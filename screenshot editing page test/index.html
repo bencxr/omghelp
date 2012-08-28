@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Harmony</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content="Procedural Drawing Tool"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<style type="text/css">
+			*
+			{
+				font-family: "Lucida Grande";
+				font-size: 12px;
+			}
+			
+			body
+			{
+				margin: 0px;
+				overflow: hidden;
+			}
+			
+			select
+			{
+				text-transform: uppercase;
+				font-size: 11px;
+				text-align: center;
+			}
+			
+			hr
+			{
+				border: 0;
+				height: 1px;
+				background-color: #ccc;
+				margin: 20px 0px;
+			}
+			
+			label
+			{
+			    font-size: 10px;
+			    font-weight: bold;
+			    text-shadow: 0px 1px 3px black, 0px 0px 4px black, 0px 3px 10px black;
+			    color: white;
+			}
+			
+			.about
+			{
+			    width: 340px;
+			    border-radius:4px;
+			    border: 1px solid #fff;
+			    -webkit-background-clip:padding-box;
+			}
+			
+			.menu
+			{
+			
+			}
+			
+			.gui
+			{
+				color: #ccc;
+				background: #36393a url(img/menu.png) left bottom repeat-x;
+				padding: 5px 10px;
+				text-align: center;
+				text-transform: uppercase;
+				line-height: 18px;
+				cursor: default;
+				text-shadow: 0px 1px 1px black;
+				-webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.8);
+			}
+			
+			.button
+			{
+				padding: 2px;
+				cursor: pointer;
+			}
+			
+			.button:hover, .button:active
+			{
+			    text-shadow: 0px 1px 3px black;
+			}
+			
+			a, a:hover, a:visited {
+			    color: #abf;
+			    text-decoration: none;
+			}
+			
+			.key
+			{
+				padding: 0px 8px;
+				margin-left: 1px;
+				background-color: #222;
+				border-radius: 3px;
+			}
+			
+			.well {
+			    border-radius: 4px;
+			    border: 1px solid black;
+			    -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.2);
+			    margin-right: 8px;
+			}
+		</style>
+		
+		<!-- PARSE -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.14.min.js"></script>-->
+		<script src="./js/omgparse.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!-- OPENTOK SCRIPT	--> 
+		<script src="http://staging.tokbox.com/v0.91/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+        var apiKey = '17077042'; // Replace with your API key. See http://www.tokbox.com/
+        var sessionId = "1_MX4xNzA3NzA0Mn42Ny4yMTguMTE3LjN-U2F0IEF1ZyAxMSAyMToyMjo0OSBQRFQgMjAxMn4wLjYxNDk5NjU1fg";			// Replace with your own session ID. See http://www.tokbox.com/opentok/api/tools/generator
+        var token =     'T1==cGFydG5lcl9pZD0xNzA3NzA0MiZzaWc9YjJhNDE1ZjJjYjQ2OThhZTdlODAxYTljMDUwMjYzNDVmNzNjNTY5NTpzZXNzaW9uX2lkPTFfTVg0eE56QTNOekEwTW40Mk55NHlNVGd1TVRFM0xqTi1VMkYwSUVGMVp5QXhNU0F5TVRveU1qbzBPU0JRUkZRZ01qQXhNbjR3TGpZeE5EazVOalUxZmcmY3JlYXRlX3RpbWU9MTM0NDc0NTM2OSZyb2xlPXB1Ymxpc2hlciZub25jZT0xMzQ0NzQ1MzY5LjI2MTcxODExMzk4NTgx'; // Replace with a generated token. See http://www.tokbox.com/opentok/api/tools/generator
+        var session;
+        var publisher;
+        var subscribers = {};
+        var VIDEO_WIDTH = 320;
+        var VIDEO_HEIGHT = 480;
+		
+		var lastSubscriber;
+
+        TB.addEventListener("exception", exceptionHandler);
+        
+        // Un-comment the following to set automatic logging:
+        TB.setLogLevel(TB.DEBUG);
+
+        if (TB.checkSystemRequirements() != TB.HAS_REQUIREMENTS) {
+            alert("You don't have the minimum requirements to run this application."
+                  + "Please upgrade to the latest version of Flash.");
+        } else {
+            session = TB.initSession(sessionId);    // Initialize session
+
+            // Add event listeners to the session
+            session.addEventListener('sessionConnected', sessionConnectedHandler);
+            //session.addEventListener('sessionDisconnected', sessionDisconnectedHandler);
+            session.addEventListener('connectionCreated', connectionCreatedHandler);
+            //session.addEventListener('connectionDestroyed', connectionDestroyedHandler);
+            session.addEventListener('streamCreated', streamCreatedHandler);
+            session.addEventListener('streamDestroyed', streamDestroyedHandler);
+        }
+
+        //--------------------------------------
+        //  LINK CLICK HANDLERS
+        //--------------------------------------
+
+        /*
+        If testing the app from the desktop, be sure to check the Flash Player Global Security setting
+        to allow the page from communicating with SWF content loaded from the web. For more information,
+        see http://www.tokbox.com/opentok/build/tutorials/helloworld.html#localTest
+        */
+        function connect() {
+            session.connect(apiKey, token);
+            console.log("connecting....");
+        }
+
+        function disconnect() {
+            session.disconnect();
+            //hide('disconnectLink');
+            //hide('publishLink');
+            //hide('unpublishLink');
+        }
+
+        // Called when user wants to start publishing to the session
+        function startPublishing() {
+            if (!publisher) {
+                var parentDiv = document.getElementById("myCamera");
+                var publisherDiv = document.createElement('div'); // Create a div for the publisher to replace
+                publisherDiv.setAttribute('id', 'opentok_publisher');
+                parentDiv.appendChild(publisherDiv);
+                var publisherProps = {width: VIDEO_WIDTH, height: VIDEO_HEIGHT};
+                publisher = TB.initPublisher(apiKey, publisherDiv.id, publisherProps);  // Pass the replacement div id and properties
+                session.publish(publisher);
+                //show('unpublishLink');
+                //hide('publishLink');
+            }
+        }
+
+        function stopPublishing() {
+            if (publisher) {
+                session.unpublish(publisher);
+            }
+            publisher = null;
+
+            //show('publishLink');
+            //hide('unpublishLink');
+        }
+
+        //--------------------------------------
+        //  OPENTOK EVENT HANDLERS
+        //--------------------------------------
+
+        function sessionConnectedHandler(event) {
+            // Subscribe to all streams currently in the Session
+            for (var i = 0; i < event.streams.length; i++) {
+                addStream(event.streams[i]);
+            }
+            //show('disconnectLink');
+            //hide('connectLink');
+            //show('publishLink');
+            console.log("session connected handler yeay!!!");
+        }
+
+        function streamCreatedHandler(event) {
+            // Subscribe to the newly created streams
+            for (var i = 0; i < event.streams.length; i++) {
+                addStream(event.streams[i]);
+            }
+        }
+
+        function streamDestroyedHandler(event) {
+            // This signals that a stream was destroyed. Any Subscribers will automatically be removed.
+            // This default behaviour can be prevented using event.preventDefault()
+        }
+
+        function sessionDisconnectedHandler(event) {
+            // This signals that the user was disconnected from the Session. Any subscribers and publishers
+            // will automatically be removed. This default behaviour can be prevented using event.preventDefault()
+            publisher = null;
+
+            //show('connectLink');
+            //hide('disconnectLink');
+            //hide('publishLink');
+            //hide('unpublishLink');
+        }
+
+        function connectionDestroyedHandler(event) {
+            // This signals that connections were destroyed
+        }
+
+        function connectionCreatedHandler(event) {
+            // This signals new connections have been created.
+        }
+
+        /*
+        If you un-comment the call to TB.addEventListener("exception", exceptionHandler) above, OpenTok calls the
+        exceptionHandler() method when exception events occur. You can modify this method to further process exception events.
+        If you un-comment the call to TB.setLogLevel(), above, OpenTok automatically displays exception event messages.
+        */
+        function exceptionHandler(event) {
+            if (event.code == 1013) {
+                document.body.innerHTML = "This page is trying to connect a third client to an OpenTok peer-to-peer session. "
+                    + "Only two clients can connect to peer-to-peer sessions.";
+            } else {
+                alert("Exception: " + event.code + "::" + event.message);
+            }
+        }
+
+        //--------------------------------------
+        //  HELPER METHODS
+        //--------------------------------------
+
+        function addStream(stream) {
+            // Check if this is the stream that I am publishing, and if so do not publish.
+            if (stream.connection.connectionId == session.connection.connectionId) {
+                return;
+            }
+            var subscriberDiv = document.createElement('div'); // Create a div for the subscriber to replace
+            subscriberDiv.setAttribute('id', stream.streamId); // Give the replacement div the id of the stream as its id.
+            document.getElementById("subscribers").appendChild(subscriberDiv);
+            var subscriberProps = {width: VIDEO_WIDTH, height: VIDEO_HEIGHT};
+            subscribers[stream.streamId] = session.subscribe(stream, subscriberDiv.id, subscriberProps);
+			lastSubscriber = subscribers[stream.streamId];
+			
+        }
+
+        function show(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hide(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        streamCreatedHandler
+				
+		// Custom methods
+		function cap() {
+			setBackgroundBase64( lastSubscriber.getImgData() );
+		}
+		</script>
+		
+	</head>
+	<body>
+	
+	<div>
+		<!-- center screen -->
+		<div style="width:400px; float:left;">
+			<!-- left pane -->
+			
+			<!-- hide console lah<div id="opentok_console"></div> -->
+			
+			<div id="links" width="400">
+				<!--<input type="button" value="Connect" id ="connectLink" onClick="javascript:connect()" />
+				<input type="button" value="Leave" id ="disconnectLink" onClick="javascript:disconnect()" />
+				<input type="button" value="Start Publishing" id ="publishLink" onClick="javascript:startPublishing()" />
+				<input type="button" value="Stop Publishing" id ="unpublishLink" onClick="javascript:stopPublishing()" />-->
+				<input type="button" value="Capture" id="capture" onClick="cap()" />
+			</div>
+			<div id="myCamera" class="publisherContainer"></div>
+			<div id="subscribers"></div>
+		</div>
+		<div style="width:400px; float:left;">
+			<!-- right pane -->
+				<div style="position: absolute; left: 50%; top: 15px; margin-left: -160px; width:320px; height: 100px;">
+				<!-- keeps menu sized properly -->
+				<div id="doodlemenu" width="320" height="100">
+				</div>
+			</div>
+				
+			<div style="position: absolute; left: 50%; top: 50px; margin-left: -160px; margin-top: 0px; width:320px; height: 480px;">
+				<!-- BEGIN: DO NOT CHANGE THIS -->
+				<div id="doodlediv">
+					<canvas id="doodle" width="320" height="480" style="position: absolute; top: 0; left: 0;"></canvas>
+					<canvas id="doodlebg" width="320" height="480" style="position: absolute; top: 0; left: 0; z-index: -1"></canvas>
+				</div>
+				<!-- END: DO NOT CHANGE THIS -->
+			</div>
+			</div>
+	</div>
+
+		
+		
+		<script type="text/javascript" src="js/brushes/simple.js"></script>
+		<script type="text/javascript" src="js/brushes/arrow.js"></script>
+		<script type="text/javascript" src="js/colorutils.js"></script>
+		<script type="text/javascript" src="js/colorselector.js"></script>
+		<script type="text/javascript" src="js/palette.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
+		<script type="text/javascript" src="js/about.js"></script>	
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<!-- opentok post ready script -->
+		<script type="text/javascript" charset="utf-8">
+			//show('connectLink');
+			
+			connect();
+		</script>
+	</body>
+</html>

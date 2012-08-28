@@ -1,0 +1,14 @@
+{
+    "Conversation": 
+    {
+        "SessionId" : "232312312125ADSFADSFASD",
+        "Token": "1231===312sfnasdfakjsd", 
+        "HelperName": "Benedict Chan", 
+        "CategoryName": "Tech Support", 
+        "Image": {
+            "Enabled": "true",
+            "Photo": "http://omghelp.net/images/32413423.png",
+            "Overlay": "4895n4835byf289756f89b4PNGDATA"
+        }
+    }
+}

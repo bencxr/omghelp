@@ -1,0 +1,4 @@
+{
+    "MenuCategories": 
+    <?php echo $json; ?>
+}

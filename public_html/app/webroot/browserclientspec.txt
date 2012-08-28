@@ -1,0 +1,57 @@
+Home page:
+Sign up: unhide the username, fullname, password form.
+login: unhide the username, password form.
+
+Both calls will end up at the profile page.
+
+Dashboard page: 
+Form with full name, Categories checkboxes
+
+Poll this url:
+http://omghelp.net/user/getunanswered
+
+which will return
+{
+    "Conversations":
+    [
+        {
+            "SessionId": "3549ut3547t89359t3",
+            "CategoryName": "Network Connectivity",
+            "Created": UTCTIME
+        },
+        {
+            "SessionId": "g354654645435",
+            "CategoryName": "Windows Installation",
+            "Created": UTCTIME
+        },
+        {
+            "SessionId": "g64559864697n746gh9483",
+            "CategoryName": "Network Connectivity",
+            "Created": UTCTIME
+        }
+    ]
+}
+
+When user picks a convo, go to
+http://omghelp.net/conversation/3549ut3547t89359t3
+
+Conversation:
+Contains the video and image editing tool. 
+
+When you want to send an image, you should send the image up to
+http://omghelp.net/conversation/23/setimage
+with the payload as the png data
+
+or 
+
+http://omghelp.net/conversation/23/setoverlay
+with the payload as the png data
+
+or
+
+http://omghelp.net/conversation/23/disableimage
+
+which will disable the image showing.
+
+With the clientid in the post header and the image data as well. 
+After that you should send the signalevent via tokbox. 
