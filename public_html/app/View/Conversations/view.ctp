@@ -1,6 +1,7 @@
 <?php
     $this->Html->css(array('conversation'), 'stylesheet', array('inline' => false));
-    $this->Html->script("http://staging.tokbox.com/v0.91/js/TB.min.js", array('inline' => false));
+    // $this->Html->script("http://staging.tokbox.com/v0.91/js/TB.min.js", array('inline' => false));
+    $this->Html->script("http://static.opentok.com/v0.91/js/TB.min.js", array('inline' => false));
 ?>
 <style>/*
   #subscriber object {

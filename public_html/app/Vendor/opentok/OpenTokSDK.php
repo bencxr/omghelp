@@ -52,7 +52,7 @@ class OpenTokSDK {
     private $api_secret;
     private $server_url;
 
-    public function __construct($api_key, $api_secret, $production=FALSE) {
+    public function __construct($api_key, $api_secret, $production=TRUE) {
         $this->api_key = $api_key;
         $this->api_secret = trim($api_secret);
         if($production){
@@ -161,7 +161,6 @@ class OpenTokSDK {
 
     protected function _do_request($url, $data, $auth = array('type' => 'partner')) {
         $url = $this->server_url . $url;
-
         $dataString = "";
         foreach($data as $key => $value){
             $value = urlencode($value);
